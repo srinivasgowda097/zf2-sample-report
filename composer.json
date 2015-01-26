@@ -1,0 +1,35 @@
+{
+    "name": "pedrobrazao/zf2-skeleton",
+    "description": "Alternative Skeleton Application for Zend Framework 2",
+    "license": "BSD-3-Clause",
+    "homepage": "http://github.com/pedrobrazao/zf2-skeleton",
+    "authors": [
+        {
+            "name": "Pedro Brazão Ferreira"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/pedrobrazao/zf2-skeleton/issues"
+    },
+    "keywords": [
+        "framework",
+        "doctrine",
+        "zf2"
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "ext-sqlite3": "*",
+        "zendframework/zendframework": "2.3.*",
+        "doctrine/doctrine-orm-module": "0.8.*"
+    },
+    "require-dev": {
+        "ext-xdebug": "*",
+        "phpunit/phpunit": "4.4.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Application\\": "module/Application/src/",
+            "ApplicationTest\\": "module/Application/tests/"
+        }
+    }
+}

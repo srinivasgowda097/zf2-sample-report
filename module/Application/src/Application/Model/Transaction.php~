@@ -1,0 +1,158 @@
+<?php
+
+namespace Application\Model;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Transaction
+ * 
+ * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
+ */
+class Transaction
+{
+
+    /**
+     * @var integer
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(type="datetime", name="created_date")
+     */
+    private $createdDate;
+
+    /**
+     * @var float
+     * @ORM\Column(type="decimal", precision=2)
+     */
+    private $value;
+
+    /**
+     * @var \Application\Model\Currency
+     * @ORM\ManyToOne(targetEntity="Currency", inversedBy="transactions")
+     */
+    private $currency;
+
+    /**
+     * @var \Application\Model\Merchant
+     * @ORM\ManyToOne(targetEntity="Merchant", inversedBy="transactions")
+     */
+    private $merchant;
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function onPrePersist()
+    {
+        $this->createdDate = new \DateTime();
+    }
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set createdDate
+     *
+     * @param \DateTime $createdDate
+     * @return Transaction
+     */
+    public function setCreatedDate($createdDate)
+    {
+        $this->createdDate = $createdDate;
+
+        return $this;
+    }
+
+    /**
+     * Get createdDate
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedDate()
+    {
+        return $this->createdDate;
+    }
+
+    /**
+     * Set value
+     *
+     * @param string $value
+     * @return Transaction
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get value
+     *
+     * @return string 
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * Set currency
+     *
+     * @param \Application\Model\Currency $currency
+     * @return Transaction
+     */
+    public function setCurrency(\Application\Model\Currency $currency = null)
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Get currency
+     *
+     * @return \Application\Model\Currency 
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * Set merchant
+     *
+     * @param \Application\Model\Merchant $merchant
+     * @return Transaction
+     */
+    public function setMerchant(\Application\Model\Merchant $merchant = null)
+    {
+        $this->merchant = $merchant;
+
+        return $this;
+    }
+
+    /**
+     * Get merchant
+     *
+     * @return \Application\Model\Merchant 
+     */
+    public function getMerchant()
+    {
+        return $this->merchant;
+    }
+}
