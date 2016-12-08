@@ -39,7 +39,7 @@ class Currency extends \Application\Model\Currency implements \Doctrine\ORM\Prox
     public static $lazyPropertiesDefaults = array();
 
 
-
+//
     /**
      * @param \Closure $initializer
      * @param \Closure $cloner
